@@ -32,7 +32,8 @@ LCMFrontEnd::LCMFrontEnd(const std::string & in_log_fname, const std::string & o
     }
   }
   else {
-    lcm_recv = new lcm::LCM(bot_lcm_get_global(NULL));
+//    lcm_recv = new lcm::LCM(bot_lcm_get_global(NULL));
+      lcm_recv = new lcm::LCM("udpm://239.255.76.67:7667?ttl=1");
   }
 
   if (running_to_log) {
@@ -45,7 +46,7 @@ LCMFrontEnd::LCMFrontEnd(const std::string & in_log_fname, const std::string & o
     }
   }
   else {
-    lcm_pub = new lcm::LCM(); // mfallon publish back to lcm if run from log
+    lcm_pub = new lcm::LCM("udpm://239.255.76.67:7667?ttl=1"); // mfallon publish back to lcm if run from log
   }
 
   if (param_fname.empty()) {
